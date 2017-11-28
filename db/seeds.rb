@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "Started seed"
+puts "Emptying DB!"
+
+Task.destroy_all
+
+10.times do
+  task = Task.new(name: Faker::Beer.name , description: Faker::Beer.style , user: Faker::FamilyGuy.character)
+
+  puts "#{task.name} saved!" if task.save
+end
+
+puts "Seeding finished!"
+
